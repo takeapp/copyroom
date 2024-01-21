@@ -1,0 +1,11 @@
+{
+    "inputs": [
+        {
+            "type": "textarea",
+            "label": "Transcript",
+            "description": "Copy and paste srt file content",
+            "id": "text"
+        }
+    ],
+    "prompt": "Create Youtube chapters.\n\nInput: ###{text}###"
+}

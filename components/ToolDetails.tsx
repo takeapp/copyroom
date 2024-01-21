@@ -2,19 +2,18 @@
 
 import { Tool } from "@/types/catalog";
 import { useCompletion } from "ai/react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 type FormStateType = {
     [key: string]: string;
 };
 
 export function ToolDetails({ tool }: { tool: Tool }) {
-    const { complete } = useCompletion({
+    const { completion, complete } = useCompletion({
         api: "/api/completion",
     });
 
     const [formState, setFormState] = useState<FormStateType>({});
-    const [result, setResult] = useState("");
 
     const handleInputChange = (
         event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,19 +24,20 @@ export function ToolDetails({ tool }: { tool: Tool }) {
         });
     };
 
-    const handleCompletion = async (state: FormStateType) => {
-        const prompt = tool.prompt.replace(
-            /{(\w+)}/g,
-            (_, key) => state[key] || ""
-        );
+    const handleCompletion = useCallback(
+        async (state: FormStateType) => {
+            const prompt = tool.prompt.replace(
+                /{(\w+)}/g,
+                (_, key) => state[key] || ""
+            );
 
-        console.log(prompt);
+            console.log(prompt);
 
-        const completion = await complete(prompt);
-        if (!completion) throw new Error("Failed");
-
-        setResult(completion);
-    };
+            const completion = await complete(prompt);
+            if (!completion) throw new Error("Failed");
+        },
+        [complete]
+    );
 
     // states for form inputs
 
@@ -80,7 +80,13 @@ export function ToolDetails({ tool }: { tool: Tool }) {
                 Submit
             </button>
             <hr />
-            <div>{result}</div>
+            <div
+                style={{
+                    whiteSpace: "pre-wrap",
+                }}
+            >
+                {completion}
+            </div>
         </>
     );
 }
