@@ -1,0 +1,11 @@
+{
+    "inputs": [
+        {
+            "type": "textarea",
+            "label": "Text",
+            "description": "Any text",
+            "id": "text"
+        }
+    ],
+    "prompt": "Rephrase to a clearer and easy to understand text: {transcript}"
+}
