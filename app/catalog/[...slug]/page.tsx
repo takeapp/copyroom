@@ -16,14 +16,9 @@ export default function Tool({
         readFileSync(`${rootDir}/catalog/${path}.json`, "utf8")
     ) as Tool;
 
-    async function answer(formData: FormData) {
-        "use server";
-        console.log(formData);
-    }
-
     return (
         <main>
-            <ToolDetails tool={tool} action={answer} />
+            <ToolDetails tool={tool} />
         </main>
     );
 }

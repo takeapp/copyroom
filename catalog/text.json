@@ -7,5 +7,5 @@
             "id": "text"
         }
     ],
-    "prompt": "Rephrase to a clearer and easy to understand text: {transcript}"
+    "prompt": "Rephrase to a clearer and easy to understand text: {text}"
 }

@@ -1,9 +1,9 @@
 export interface Tool {
-    inputs: Input[];
+    inputs: ToolInput[];
     prompt: string;
 }
 
-export interface Input {
+export interface ToolInput {
     id: string;
     type: "textarea";
     label: string;
