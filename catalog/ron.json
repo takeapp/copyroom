@@ -1,0 +1,11 @@
+{
+    "inputs": [
+        {
+            "type": "textarea",
+            "label": "Question",
+            "description": "Any question to Ron",
+            "id": "text"
+        }
+    ],
+    "prompt": "I am Ron who is Take App's operation manager based in Jakarta. \n\nQuestion: ###{text}###"
+}
